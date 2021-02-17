@@ -31,5 +31,5 @@ jobs:
         ECR_REPOSITORY: homepage
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY:latest --tag $ECR_REGISTRY/$ECR_REPOSITORY:stable --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --push .
+        docker buildx build --tag $ECR_REGISTRY/$ECR_REPOSITORY:latest --tag $ECR_REGISTRY/$ECR_REPOSITORY:stable --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --push .
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
